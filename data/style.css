@@ -1,0 +1,258 @@
+/* ---------- Шрифты цифровых показателей ----------- */
+@font-face {
+  font-family: 'seven-segment'; /* Название шрифта */
+  src: url("seven-segment.otf") format("truetype"); /* Путь к файлу шрифта */
+}
+
+/* ===================== ОСНОВНЫЕ СТИЛИ ===================== */
+/* Основные настройки страницы */
+body {
+  font-family: Arial, sans-serif; /* Шрифт по умолчанию */
+  background-color: #f4f4f9; /* Цвет фона страницы */
+  margin: 0; /* Убираем отступы по краям */
+  padding: 20px; /* Внутренние отступы */
+  color: #333; /* Цвет основного текста */
+}
+
+/* Стили для основного контейнера */
+.container {
+  max-width: 1200px; /* Максимальная ширина контента */
+  margin: 0 auto; /* Центрирование по горизонтали */
+  padding: 20px; /* Внутренние отступы */
+  background-color: #fff; /* Цвет фона контейнера */
+  border-radius: 10px; /* Закругление углов */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для эффекта глубины */
+}
+
+/* Текущее время */
+.time-block  {
+	font-family: 'seven-segment', sans-serif; /* Шрифт для цифрового отображения */
+  font-size: 3.70rem; /* Размер шрифта */
+  text-align: left; /* Центрирование текста */
+  text-shadow: 0 1px 2px #000; /* Тень текста */
+  color: rgb(209, 179, 6); /* Цвет текста */
+}
+
+/* Тестовый заголовок */
+.heading {
+  text-shadow: 0 1px 2px #3994fc; /* Тень текста */
+  color: rgb(241, 61, 37); /* Цвет текста (зеленый) */
+  margin: 0 auto; /* Центрирование по горизонтали */
+  font-size: 2.70rem; /* Размер шрифта */
+  text-align: center; /* Центрирование текста */
+}
+
+/* ===================== ПЕРЕКЛЮЧАТЕЛЬ РЕЖИМА РАБОТЫ ===================== */
+.mode-switch {
+  display: flex; /* Используем flex-расположение */
+  align-items: center; /* Вертикальное выравнивание */
+  justify-content: center; /* Горизонтальное выравнивание */
+  margin-bottom: 20px; /* Отступ снизу */
+}
+
+/* Стили для кастомного переключателя */
+.switch {
+  position: relative; /* Для позиционирования ползунка */
+  display: inline-block; /* Отображение в строке */
+  width: 60px; /* Ширина переключателя */
+  height: 34px; /* Высота переключателя */
+}
+
+/* Скрытие дефолтного чекбокса */
+.switch input {
+  opacity: 0; /* Полная прозрачность */
+  width: 0;
+  height: 0;
+}
+
+/* Стили для фона переключателя */
+.slider {
+  position: absolute; /* Абсолютное позиционирование */
+  cursor: pointer; /* Курсор-указатель */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc; /* Цвет фона в выключенном состоянии */
+  transition: 0.4s; /* Плавная анимация переключения */
+  border-radius: 34px; /* Закругленная форма */
+}
+
+/* Стили для движущегося элемента переключателя */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white; /* Цвет ползунка */
+  transition: 0.4s; /* Анимация движения */
+  border-radius: 50%; /* Круглая форма */
+}
+
+/* Изменение цвета фона при активации */
+input:checked + .slider {
+  background-color: #2196F3; /* Синий цвет в активном состоянии */
+}
+
+/* Позиция ползунка при активации */
+input:checked + .slider:before {
+  transform: translateX(26px); /* Сдвиг вправо */
+}
+
+/* ===================== КОНТЕЙНЕР ТАЙМЕРОВ ===================== */
+.timer-container {
+  display: flex; /* Flex-расположение элементов */
+  flex-wrap: wrap; /* Перенос на новую строку */
+  gap: 20px; /* Расстояние между элементами */
+  justify-content: center; /* Центрирование по горизонтали */
+}
+
+/* Стили отдельных таймеров */
+.timer-box {
+  background-color: #f9f9f9; /* Светло-серый фон */
+  border: 1px solid #ddd; /* Серая рамка */
+  border-radius: 10px; /* Закругление углов */
+  padding: 20px; /* Внутренние отступы */
+  width: 300px; /* Фиксированная ширина */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Легкая тень */
+}
+
+/* Заголовок таймера */
+.timer-box h2 {
+  text-align: center; /* Центрирование текста */
+  color: #2c3e50; /* Цвет заголовка */
+  margin-top: 5px; /* Отступ сверху*/
+  margin-bottom: 15px; /* Отступ снизу */
+}
+
+/* ===================== СТИЛИ АВТОМАТИЧЕСКОГО И РУЧНОГО РЕЖИМА ===================== */
+.auto-mode, .manual-mode {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Расстояние между элементами */
+}
+
+.manual-mode {
+  justify-content: center; /* Центрирование по горизонтали */
+  margin-top: 20px;        /* Отступ сверху */
+}
+
+/* Стили для группы ввода (надпись + поле ввода) */
+.input-group {
+  display: flex;
+  flex-direction: row; /* Меняем направление на горизонтальное */
+  align-items: center; /* Выравниваем элементы по вертикали */
+  gap: 10px; /* Расстояние между элементами */
+  margin-bottom: 10px; /* Отступ снизу */
+  /* width: 8em; */ /* Лучше убрать фиксированную ширину для горизонтального расположения */
+}
+
+/* Стили для надписей */
+.input-group label {
+  font-size: 14px;
+  color: #333;
+  font-weight: bold;
+}
+
+/*====================== /* Блока полей ввода значений таймера ============================== */
+.auto-mode input {
+  padding: 10px; /* Внутренние отступы */
+  border: 1px solid #ccc; /* Серая рамка */
+  border-radius: 5px; /* Закругление углов */
+  font-size: 16px; /* Размер шрифта */
+}
+
+/* Стиль при фокусе на поле ввода */
+.auto-mode input:focus {
+  border-color: #2196F3; /* Синяя рамка */
+  outline: none; /* Убираем стандартный контур */
+}
+
+/* Стили кнопки "Применить" */
+.auto-mode button, .relay-btn {
+  padding: 10px; /* Внутренние отступы */
+  background-color: #2196F3; /* Синий цвет фона */
+  color: white; /* Белый текст */
+  border: none; /* Без рамки */
+  border-radius: 5px; /* Закругление углов */
+  font-size: 16px; /* Размер шрифта */
+  cursor: pointer; /* Курсор-указатель */
+  transition: background-color 0.3s; /* Плавное изменение цвета */
+}
+
+/* Эффект при наведении на кнопку */
+.auto-mode button:hover, .relay-btn:hover {
+  opacity: 0.9; /* Легкое затемнение */
+}
+
+/* Состояние кнопки "Включено" */
+.relay-btn.on {
+  background-color: #4CAF50; /* Зеленый цвет */
+}
+
+/* Состояние кнопки "Выключено" */
+.relay-btn.off {
+  background-color: #ff4444; /* Красный цвет */
+}
+
+/* Циферблат обратного отсчета таймера */
+.countdown {
+	  font-family: 'seven-segment', sans-serif; /* Шрифт для цифрового отображения */
+  text-shadow: 0 1px 2px #000; /* Тень текста */
+  color: #2f2; /* Цвет текста (зеленый) */
+ float: left;   /* Центровка циферблата по левому краю */
+  font-size: 1.70rem; /* Размер шрифта */
+}
+
+/* Кнопка "Применить" */
+/* .apply-btn { */
+ /*  float: right;  /* Центровка кнопки по правому краю */
+/*  background-color: #ededed; */
+/* } */
+
+/*.apply-btn:before { */
+/* transform: translateY(2px); */
+/* } */
+
+ button {
+  float: right;  /* Центровка кнопки по правому краю */
+  background-color: #ededed;
+  width: 100px; /* Установите фиксированную ширину */
+  height: 50px; /* Установите фиксированную высоту */
+  /* Другие стили кнопок */
+  font-size: 16px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+ button:active {
+  box-shadow: 0 0 0 #ededed;
+  margin: 2px 2px 2px 2px;
+  color: black;
+  transform: none; /* Отключение изменения размера при нажатии */
+}
+
+
+.countdown_apply {
+  display: flex;       /* расположить в одной строке */
+  align-items: center; /* Выравнивание элементов по вертикали */
+  margin-right: 10px; /* Отступ между элементами */
+}
+
+/* ===================== АДАПТИВНОСТЬ ===================== */
+@media (max-width: 768px) {
+  .timer-container {
+    flex-direction: column; /* Элементы в колонку */
+    align-items: center; /* Центрирование */
+  }
+
+  .timer-box {
+    width: 86%; /* Полная ширина контейнера */
+   /* max-width: 86%; /* Максимальная ширина контейнера */
+  }
+}

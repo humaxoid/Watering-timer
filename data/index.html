@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Система полива</title>  <!-- Заголовок страницы -->
+  <meta charset="UTF-8">  <!-- Кодировка страницы -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Настройка viewport -->
+  <link rel="stylesheet" href="style.css">  <!-- Подключение файла стилей -->
+</head>
+
+<body>
+  <div class="container">
+    <!-- Блок для отображения текущего времени -->
+    <b>ТЕКУЩЕЕ ВРЕМЯ</b>
+    <div id="currentTime" class="time-block">--:--:--</div>
+
+    <!-- Заголовок страницы -->
+    <h1 class="heading">Управление поливом </h1>
+    <br>
+    <!-- Переключатель режимов (Авто/Ручной) -->
+    <div class="mode-switch">
+      <label class="switch">
+        <input type="checkbox" id="mode">       <!-- Чекбокс для переключения режима -->
+        <span class="slider"></span>            <!-- Ползунок переключателя -->
+      </label>
+      <span id="modeText">&nbsp; Ручной</span>  <!-- Текст, отображающий текущий режим -->
+    </div>
+
+    <!-- Контейнер для таймеров -->
+    <div class="timer-container">
+
+      <!------------------------------------- Таймер 1 ----------------------------------------->
+      <div class="timer-box">
+        <h2>Таймер полива 1</h2>
+
+        <!-- Автоматический режим -->
+        <div class="auto-mode">
+          <div class="input-group">
+            <input type="time" id="start0" title="Выбрать время включения полива" required>  <!-- Ввод времени старта -->
+            <label for="start0">Время запуска</label>  <!-- Метка для времени старта -->
+          </div>
+
+          <div class="input-group">
+            <input type="number" id="duration0" min="1" max="240" placeholder="Длительность (мин)" title="Введите продолжительность полива в минутах" required>  <!-- Ввод длительности -->
+            <label for="duration0">Длительность (минуты)</label>  <!-- Метка для длительности -->
+          </div>
+
+          <div class="input-group">
+            <input type="number" id="interval0" min="1" max="168" placeholder="Интервал (ч)" title="Введите периодичность полива в часах" required>  <!-- Ввод интервала -->
+            <label for="interval0">Интервал (часы)</label>  <!-- Метка для интервала -->
+          </div>
+
+          <div class="countdown_allply">
+            <div class="countdown" id="countdown0">--:--:--</div>  <!-- Блок для отображения обратного отсчета -->
+            <button class="apply-btn" onclick="applyAuto(0)">Применить</button>  <!-- Кнопка для применения настроек -->
+          </div>
+        </div>
+
+        <!-- Ручной режим -->
+        <div class="manual-mode">
+          <button class="relay-btn" id="relay0" onclick="toggleRelay(0)">OFF</button>  <!-- Кнопка для ручного управления реле -->
+        </div>
+      </div>
+
+      <!--------------------------------------- Таймер 2 ------------------------------------------->
+      <div class="timer-box">
+        <h2>Таймер полива 2</h2>
+
+        <!-- Автоматический режим -->
+        <div class="auto-mode">
+          <div class="input-group">
+            <input type="time" id="start1" title="Выбрать время включения полива" required>
+            <label for="start1">Время запуска</label>
+          </div>
+
+          <div class="input-group">
+            <input type="number" id="duration1" min="1" max="240" placeholder="Длительность (мин)" title="Введите продолжительность полива в минутах" required>
+            <label for="duration1">Длительность (минуты)</label>
+          </div>
+
+          <div class="input-group">
+            <input type="number" id="interval1" min="1" max="168" placeholder="Интервал (ч)" title="Введите периодичность полива в часах" required>
+            <label for="interval1">Интервал (часы)</label>
+          </div>
+
+          <div class="countdown_allply">
+            <div class="countdown" id="countdown1">--:--:--</div>
+            <button class="apply-btn" onclick="applyAuto(1)">Применить</button>
+          </div>
+        </div>
+
+        <!-- Ручной режим -->
+        <div class="manual-mode">
+          <button class="relay-btn" id="relay1" onclick="toggleRelay(1)">OFF</button>
+        </div>
+      </div>
+
+      <!--------------------------------------- Таймер 3 ------------------------------------------>
+      <div class="timer-box">
+        <h2>Таймер полива 3</h2>
+        
+        <!-- Автоматический режим -->
+        <div class="auto-mode">
+          <div class="input-group">
+            <input type="time" id="start2" title="Выбрать время включения полива" required>
+            <label for="start2">Время запуска</label>
+          </div>
+
+          <div class="input-group">
+            <input type="number" id="duration2" min="1" max="240" placeholder="Длительность (мин)" title="Введите продолжительность полива в минутах" required>
+            <label for="duration2">Длительность (минуты)</label>
+          </div>
+
+          <div class="input-group">
+            <input type="number" id="interval2" min="1" max="168" placeholder="Интервал (ч)" title="Введите периодичность полива в часах" required>
+            <label for="interval2">Интервал (часы)</label>
+          </div>
+
+          <div class="countdown_allply">
+            <div class="countdown" id="countdown2">--:--:--</div>
+            <button class="apply-btn" onclick="applyAuto(2)">Применить</button>
+          </div>
+        </div>
+
+        <!-- Ручной режим -->
+        <div class="manual-mode">
+          <button class="relay-btn" id="relay2" onclick="toggleRelay(2)">OFF</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Подключение JavaScript файла -->
+  <script src="script.js"></script>
+</body>
+
+</html>
